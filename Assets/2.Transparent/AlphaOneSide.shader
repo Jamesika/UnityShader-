@@ -1,15 +1,23 @@
-﻿Shader "Hidden/AlphaTest"
+﻿Shader "Hidden/AlphaOneSide"
 {
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_Color("Color", Color) = (1,1,1,0.5)
 	}
 	SubShader
 	{
-		Tags{ "Queue" = "AlphaTest" }
-		ZWrite Off 	Cull Off
+		Tags{ "Queue" = "Transparent" }
+		Blend SrcAlpha OneMinusSrcAlpha
+		Cull off
+		Pass 
+		{
+			ColorMask 0
+			ZWrite on
+		}
 		Pass
 		{
+			ZWrite off
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
@@ -37,11 +45,12 @@
 			}
 			
 			sampler2D _MainTex;
+			fixed4 _Color;
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				clip(length(i.uv) - 0.5);
-				return fixed4(0.5,0.5,0.5,0.5);
+				clip(length(i.uv - fixed2(0.5,0.5)) - 0.3);
+				return _Color;
 			}
 			ENDCG
 		}

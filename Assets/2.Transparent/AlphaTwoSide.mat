@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: AlphaBlend
-  m_Shader: {fileID: 4800000, guid: 3122965e5af0b68478a598e553888ec4, type: 3}
+  m_Name: AlphaTwoSide
+  m_Shader: {fileID: 4800000, guid: e54749e26e900db4ab8f126d1fb4d4e4, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -72,5 +72,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.41960785, g: 0.7374968, b: 0.83137256, a: 0.40784314}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

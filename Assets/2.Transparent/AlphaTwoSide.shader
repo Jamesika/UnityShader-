@@ -1,4 +1,4 @@
-﻿Shader "Hidden/AlphaTest"
+﻿Shader "Hidden/AlphaTwoSide"
 {
 	Properties
 	{
@@ -14,12 +14,12 @@
 		{
 			Cull Front
 			CGPROGRAM
-		#pragma vertex vert
-		#pragma fragment frag
+			#pragma vertex vert
+			#pragma fragment frag
 
-		#include "UnityCG.cginc"
+			#include "UnityCG.cginc"
 
-				struct appdata
+			struct appdata
 			{
 				float4 vertex : POSITION;
 				float2 uv : TEXCOORD0;
@@ -43,7 +43,7 @@
 
 			fixed4 frag(v2f i) : SV_Target
 			{
-				clip(length(i.uv.xy) - 0.5);
+				clip(length(i.uv - fixed2(0.5,0.5)) - 0.3);
 				return fixed4(0.5,0.7,0.7,0.5);
 
 			}
@@ -82,7 +82,7 @@
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				clip(length(i.uv.xy) - 0.5);
+				clip(length(i.uv - fixed2(0.5,0.5)) - 0.3);
 				return fixed4(0.5,0.7,0.7,0.5);
 			}
 			ENDCG
