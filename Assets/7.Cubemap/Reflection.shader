@@ -104,7 +104,9 @@ Shader "Hidden/Reflection" {
 				UNITY_LIGHT_ATTENUATION(atten, i, worldPos);
 					
 				fixed3 reflectColor = texCUBE(_Cubemap, i.worldReflec)*_ReflectionColor;
-				return fixed4(ambient + lerp(diffuse + specular, reflectColor, _ReflectionAmount) * atten, 1.0);
+				fixed fresnel = _ReflectionAmount + (1 - _ReflectionAmount)*pow(1 - dot(viewDir, bump), 5);
+				
+				return fixed4(ambient + lerp(diffuse + specular, reflectColor, saturate(fresnel) ) * atten, 1.0);
 				// return fixed4(ambient + (diffuse + specular) * atten, 1.0);
 			}
 			
