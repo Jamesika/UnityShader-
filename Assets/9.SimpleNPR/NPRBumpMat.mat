@@ -44,13 +44,13 @@ Material:
     - _RotationZ: -4
     - _ScaleX: 0
     - _ScaleY: 0
-    - _SpecularScale: 0.01
+    - _SpecularScale: 0.002
     - _SplitX: 0
     - _SplitY: 0
     - _SquarN: 0
     - _SquarS: 0
     - _Square: 1
-    - _SquareN: 2
+    - _SquareN: 3
     - _SquarePow: 2
     - _SquareScale: 0.5
     - _TranslationX: 0.03

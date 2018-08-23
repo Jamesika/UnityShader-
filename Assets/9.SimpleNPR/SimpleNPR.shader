@@ -198,14 +198,13 @@
 				float thetaU = acos(dotU);
 				float sqrnormU = sin(pow(2 * thetaU, _SquarN));
 				float sqrnormV = sin(pow(2 * thetaV, _SquarN));
-				H = normalize(H - _SquarS *(sqrnormU*dotU*du + sqrnormV*dotV * dv));
-
+				H = normalize(H - _SquarS * (sqrnormU*dotU*du + sqrnormV * dotV * dv));
+				
 				// 方块化2
 				dotV = dot(H, dv);
 				dotU = dot(H, du);
 				float3 dir = normalize(dotV * dv + dotU * du);
 				float scale = pow(1-abs(abs(dot(dir, du)) - abs(dot(dir, dv))), 2);
-
 				H = normalize(H + scale*_Square*worldNormal*0.38);
 
 				worldHalfDir = H;
